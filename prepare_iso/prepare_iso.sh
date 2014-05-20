@@ -115,8 +115,8 @@ if [ -e "$ESD.shadow" ]; then
 	rm "$ESD.shadow"
 fi
 
-MNT_ESD=$(/usr/bin/mktemp -d /tmp/veewee-osx-esd.XXXX)
-SHADOW_FILE=$(/usr/bin/mktemp /tmp/veewee-osx-shadow.XXXX)
+MNT_ESD=$(/usr/bin/mktemp -d ${TMPDIR:-'/tmp'}/veewee-osx-esd.XXXX)
+SHADOW_FILE=$(/usr/bin/mktemp ${TMPDIR:-'/tmp'}/veewee-osx-shadow.XXXX)
 rm "$SHADOW_FILE"
 msg_status "Attaching input OS X installer image with shadow file.."
 hdiutil attach "$ESD" -mountpoint "$MNT_ESD" -shadow "$SHADOW_FILE" -nobrowse -owners on 
